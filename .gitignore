@@ -1,0 +1,11 @@
+# Personal files (project brief stays private)
+personal/*
+
+# Build and dependencies
+node_modules/
+dist/
+.DS_Store
+
+# Cat meme images stay local (original meme photos are private-use only)
+public/cats/*/*
+!public/cats/*/.gitkeep

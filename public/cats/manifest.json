@@ -1,0 +1,9 @@
+{
+  "neutral": { "name": "Loaf", "images": [] },
+  "happy": { "name": "Happy Happy Happy cat", "images": [] },
+  "shocked": { "name": "Shocked cat", "images": [] },
+  "smug": { "name": "Smirking cat", "images": [] },
+  "sad": { "name": "Crying cat", "images": [] },
+  "unimpressed": { "name": "Grumpy Cat", "images": [] },
+  "confused": { "name": "Smudge", "images": [] }
+}
