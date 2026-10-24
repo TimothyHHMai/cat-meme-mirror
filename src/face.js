@@ -1,8 +1,7 @@
 // MediaPipe Face Landmarker setup and feature extraction (blendshapes + head roll).
-import { FaceLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
+import { FaceLandmarker } from '@mediapipe/tasks-vision';
+import { createVisionTask } from './mediapipe.js';
 
-// Pinned to the installed package version so the wasm matches the JS bundle.
-const WASM_URL = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.1.1/wasm';
 const MODEL_URL =
   'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task';
 
@@ -11,20 +10,10 @@ const RIGHT_EYE_OUTER = 33;
 const LEFT_EYE_OUTER = 263;
 
 export async function createFaceTracker() {
-  const fileset = await FilesetResolver.forVisionTasks(WASM_URL);
-  const options = (delegate) => ({
-    baseOptions: { modelAssetPath: MODEL_URL, delegate },
-    runningMode: 'VIDEO',
+  const landmarker = await createVisionTask(FaceLandmarker, MODEL_URL, {
     numFaces: 1,
     outputFaceBlendshapes: true,
   });
-
-  let landmarker;
-  try {
-    landmarker = await FaceLandmarker.createFromOptions(fileset, options('GPU'));
-  } catch {
-    landmarker = await FaceLandmarker.createFromOptions(fileset, options('CPU'));
-  }
 
   // Returns { blendshapes: { name: score }, headRoll } or null when no face is found.
   // Pass the unmirrored video: blendshape Left/Right refer to the subject's face.

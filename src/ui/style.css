@@ -111,4 +111,25 @@ header,
   color: #1d1b18;
   font-size: 1.5rem;
   font-weight: 700;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Absolutely positioned so tall images can't stretch the grid row past the card. */
+.meme-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.meme-card img:not([hidden]) + figcaption {
+  display: none;
+}
+
+.scores li.active {
+  color: var(--fg);
+  font-weight: 700;
 }

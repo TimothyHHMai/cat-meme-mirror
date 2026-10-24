@@ -1,17 +1,22 @@
-// Debug drawer: live bars for the strongest blendshapes and head roll, for tuning thresholds.
+// Debug drawer: live bars for the strongest blendshapes, head roll and hand gestures, for tuning thresholds.
 const TOP_N = 12;
 
 export function createDebugDrawer(root) {
   root.innerHTML = `
     <summary>Debug</summary>
     <p class="debug-roll">Head roll: <span>–</span></p>
+    <p class="debug-hands">Hands: <span>–</span></p>
     <ol class="debug-bars"></ol>
   `;
   const roll = root.querySelector('.debug-roll span');
+  const handsText = root.querySelector('.debug-hands span');
   const bars = root.querySelector('.debug-bars');
 
-  return function update(features) {
+  return function update(features, hands) {
     if (!root.open) return;
+    handsText.textContent = hands.length
+      ? hands.map((h) => `${h.handedness}: ${h.gesture} (${h.gestureScore.toFixed(2)})`).join(', ')
+      : 'none';
     if (!features) {
       roll.textContent = 'no face';
       bars.innerHTML = '';

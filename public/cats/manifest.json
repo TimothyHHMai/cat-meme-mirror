@@ -1,9 +1,14 @@
 {
-  "neutral": { "name": "Loaf", "images": [] },
-  "happy": { "name": "Happy Happy Happy cat", "images": [] },
-  "shocked": { "name": "Shocked cat", "images": [] },
+  "neutral": { "name": "Loaf", "images": ["image.png"] },
+  "happy": { "name": "Happy Happy Happy cat", "images": ["image.png"] },
+  "shocked": { "name": "Shocked cat", "images": ["image.png", "image copy.png", "image copy 2.png"] },
+  "evil": { "name": "Evil cat", "images": ["image.png"] },
+  "rigby": { "name": "Rigby cat", "images": ["image.png"] },
+  "side_eye": { "name": "Side-eye cat", "images": ["image.png"] },
+  "angry": { "name": "Angry cat", "images": ["image.png"] },
   "smug": { "name": "Smirking cat", "images": [] },
   "sad": { "name": "Crying cat", "images": [] },
   "unimpressed": { "name": "Grumpy Cat", "images": [] },
-  "confused": { "name": "Smudge", "images": [] }
+  "confused": { "name": "Smudge", "images": [] },
+  "erm_actually": { "name": "Erm, actually cat", "images": ["image.png"] }
 }
